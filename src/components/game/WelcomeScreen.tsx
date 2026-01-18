@@ -121,7 +121,7 @@ export function WelcomeScreen({ onStart }: WelcomeScreenProps) {
 
         {/* Footer */}
         <p className="text-center text-xs text-muted-foreground mt-8">
-          CodeScout &copy; 2026
+          CodeScouts &copy; 2026
         </p>
       </div>
     </div>
