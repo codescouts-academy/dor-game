@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 30% 97%;
+    --foreground: 220 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+
+    --primary: 252 85% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 20% 25%;
+
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 173 80% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 252 85% 60%;
+
+    --radius: 0.75rem;
+
+    /* DoR Kards Game Colors */
+    --dor-yes: 152 76% 40%;
+    --dor-yes-foreground: 0 0% 100%;
+    --dor-not-yet: 45 95% 50%;
+    --dor-not-yet-foreground: 30 30% 15%;
+    --dor-no: 0 72% 51%;
+    --dor-no-foreground: 0 0% 100%;
+
+    /* Category Colors */
+    --cat-independent: 252 85% 60%;
+    --cat-negotiable: 330 75% 55%;
+    --cat-valuable: 45 95% 50%;
+    --cat-estimable: 173 80% 40%;
+    --cat-small: 200 85% 50%;
+    --cat-testable: 15 90% 55%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 20% 15%;
+    --sidebar-primary: 252 85% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 92%;
+    --sidebar-accent-foreground: 220 20% 25%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 252 85% 60%;
+
+    --chart-1: 252 85% 60%;
+    --chart-2: 173 80% 40%;
+    --chart-3: 45 95% 50%;
+    --chart-4: 330 75% 55%;
+    --chart-5: 200 85% 50%;
+
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Lora', ui-serif, Georgia, serif;
+    --font-mono: 'Space Mono', ui-monospace, monospace;
+
+    --shadow-card: 0 4px 20px -2px hsl(252 85% 60% / 0.15);
+    --shadow-card-hover: 0 8px 30px -4px hsl(252 85% 60% / 0.25);
+    --shadow-lg: 0 10px 40px -10px hsl(0 0% 0% / 0.2);
+  }
+
+  .dark {
+    --background: 220 25% 10%;
+    --foreground: 220 15% 95%;
+
+    --card: 220 25% 14%;
+    --card-foreground: 220 15% 95%;
+
+    --popover: 220 25% 14%;
+    --popover-foreground: 220 15% 95%;
+
+    --primary: 252 85% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 20%;
+    --secondary-foreground: 220 15% 90%;
+
+    --muted: 220 20% 20%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 173 75% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 22%;
+    --input: 220 20% 22%;
+    --ring: 252 85% 65%;
+
+    /* DoR Kards Game Colors - Dark */
+    --dor-yes: 152 70% 45%;
+    --dor-yes-foreground: 0 0% 100%;
+    --dor-not-yet: 45 90% 55%;
+    --dor-not-yet-foreground: 30 30% 15%;
+    --dor-no: 0 68% 55%;
+    --dor-no-foreground: 0 0% 100%;
+
+    /* Category Colors - Dark */
+    --cat-independent: 252 80% 65%;
+    --cat-negotiable: 330 70% 60%;
+    --cat-valuable: 45 90% 55%;
+    --cat-estimable: 173 75% 45%;
+    --cat-small: 200 80% 55%;
+    --cat-testable: 15 85% 60%;
+
+    --sidebar-background: 220 25% 12%;
+    --sidebar-foreground: 220 15% 95%;
+    --sidebar-primary: 252 85% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 20%;
+    --sidebar-accent-foreground: 220 15% 90%;
+    --sidebar-border: 220 20% 22%;
+    --sidebar-ring: 252 85% 65%;
+
+    --chart-1: 252 80% 65%;
+    --chart-2: 173 75% 45%;
+    --chart-3: 45 90% 55%;
+    --chart-4: 330 70% 60%;
+    --chart-5: 200 80% 55%;
+
+    --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
+    --shadow-card-hover: 0 8px 30px -4px hsl(252 85% 65% / 0.2);
+    --shadow-lg: 0 10px 40px -10px hsl(0 0% 0% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Card flip animation utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
