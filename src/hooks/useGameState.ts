@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import {
   DorCard,
   ColumnType,
@@ -23,20 +23,58 @@ interface GameState {
   isGameCompleted: boolean;
 }
 
+const STORAGE_KEY = "dor_game_state";
+
+// Función para cargar el estado desde localStorage
+const loadGameState = (): GameState | null => {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      return JSON.parse(saved);
+    }
+  } catch (error) {
+    console.error("Error cargando el estado del juego:", error);
+  }
+  return null;
+};
+
+// Función para guardar el estado en localStorage
+const saveGameState = (state: GameState) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (error) {
+    console.error("Error guardando el estado del juego:", error);
+  }
+};
+
 export function useGameState() {
-  const [gameState, setGameState] = useState<GameState>(() => ({
-    deck: [],
-    yesCards: [],
-    notYetCards: [],
-    noCards: [],
-    currentCard: null,
-    history: [],
-    customCards: [],
-    nextCustomId: 26,
-    isGameStarted: false,
-    isGameComplete: false,
-    isGameCompleted: false,
-  }));
+  const [gameState, setGameState] = useState<GameState>(() => {
+    // Intentar cargar el estado guardado
+    const savedState = loadGameState();
+    if (savedState) {
+      return savedState;
+    }
+
+    // Estado inicial por defecto
+    return {
+      deck: [],
+      yesCards: [],
+      notYetCards: [],
+      noCards: [],
+      currentCard: null,
+      history: [],
+      customCards: [],
+      nextCustomId: 26,
+      isGameStarted: false,
+      isGameComplete: false,
+      isGameCompleted: false,
+    };
+  });
+
+  // Guardar automáticamente cada vez que cambie el estado
+  useEffect(() => {
+    saveGameState(gameState);
+  }, [gameState]);
 
   const startGame = useCallback(() => {
     // Order base cards by category, then prepend custom cards at the front
