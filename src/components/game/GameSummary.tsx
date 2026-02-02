@@ -1,4 +1,4 @@
-import { DorCard, categoryColors } from "@/data/dorCards";
+import { DorCard } from "@/data/dorCards";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,19 +30,22 @@ export function GameSummary({
     let text = `# Definition of Ready - Resultados del equipo\n`;
     text += `Fecha: ${now}\n\n`;
 
-    text += `## ✅ SÍ - Criterios acordados (${yesCards.length})\n`;
+    text += `## ✅ SÍ - Criterios acordados (${yesCards.length})\n\n`;
     yesCards.forEach((card) => {
-      text += `- ${card.title}\n`;
+      text += `### ${card.title}\n`;
+      text += `${card.description}\n\n`;
     });
 
-    text += `\n## ⏳ AÚN NO - Para el futuro (${notYetCards.length})\n`;
+    text += `## ⏳ AÚN NO - Para el futuro (${notYetCards.length})\n\n`;
     notYetCards.forEach((card) => {
-      text += `- ${card.title}\n`;
+      text += `### ${card.title}\n`;
+      text += `${card.description}\n\n`;
     });
 
-    text += `\n## ❌ NO - No aplican (${noCards.length})\n`;
+    text += `## ❌ NO - No aplican (${noCards.length})\n\n`;
     noCards.forEach((card) => {
-      text += `- ${card.title}\n`;
+      text += `### ${card.title}\n`;
+      text += `${card.description}\n\n`;
     });
 
     const blob = new Blob([text], { type: "text/markdown" });
